@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   	get 'followers' => 'relationships#followers', as: 'followers'
   end
   resources :groups, only: [:new, :index, :show, :create, :edit, :update, :destroy] do
+    get "new/mail" => "groups#new_mail"
+    get "send/mail" => "groups#send_mail"
     resource :group_users, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
